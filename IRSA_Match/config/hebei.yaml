@@ -1,0 +1,43 @@
+# config.yaml
+workdir: works/hebei
+img_dir: '/irsa/picmatch/tzb_code_js/match_code/IRSA_Match/testdata/hebei/bigbase'
+test_dir: '/irsa/picmatch/tzb_code_js/match_code/IRSA_Match/works/hebei/rottest'
+extension: ['.tif']
+test_extension: ['.png', '.tif', '.jpg', '.jpeg']
+pyscale: [0,1,2,3,4]  # 金字塔层数 0是原始分辨率
+cut_size: 512
+overlap: 0.1
+device: 'cuda:0'
+debug: false
+baseresultion: 2
+fine_pysacle: 2
+fine_cutsize: 768
+output_path: Output/RESULT.txt
+output_geojson: Output/Vec
+output_geojson_temp: Output/Vec_temp
+output_log: Output/Log
+
+
+buildbox-01:
+  droplast: true      # 丢弃最后一层
+  remove_inter: true  # 去除重叠区域数据
+  save_rangepart: true
+  save_path: IRSA_DT/Range
+  
+genfeature-02:
+  dinopath: models/dinov2_vitb14_pretrain.pth
+  gimpath: models/gim_loftr_50h.ckpt
+  batch_size: 2
+  num_workers: 8
+  processworks: 4
+  save_path: IRSA_DT/Feature
+
+processtestimg-10:
+  save_path: TEST/testdata
+
+
+
+
+
+  
+
